@@ -76,10 +76,44 @@ $('#sleep').on('click', pet.sleep);
 $('#play').on('click', pet.play);
 
 
+const gamePlay = () => {
+
+	const clearId = setInterval( () => {
+		const dead = checkForDead();
+		pet.ageUp();
+		console.log(pet.age);
+		if(dead) {
+			console.log('Your pet is not aging now!')
+			clearInterval(clearId);
+		}	
+	}, 5000);
+
+	const clearId2 = setInterval( () => {
+		pet.hunger++;
+		pet.sleepiness++;
+		pet.boredom++;
+		const dead = checkForDead();
+		console.log(pet.hunger, pet.sleepiness, pet.boredom);
+		if(dead) {
+			console.log('Your pet is dead!');
+			clearInterval(clearId2);
+		}
+
+	}, 5000)
+
+} 
 
 
+const checkForDead = () => {
+	if(pet.hunger >= 10 || pet.sleepiness >= 10 || pet.boredom >= 10) {
+		return true
+	} else {
+		return false
+	};
+}
 
 
+gamePlay();
 
 
 
