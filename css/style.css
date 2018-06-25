@@ -1,3 +1,17 @@
 .stats {
 	display: inline-block;
 }
+
+nav {
+
+}
+
+
+li {
+	margin: 0 35px;
+}
+
+img{
+    width:100%;
+    max-width:300px;
+}

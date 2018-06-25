@@ -20,7 +20,7 @@ class Tamagotchi { //set up the class Tomagotchi
 	}
 	feed () {//decreases the hunger of the pet and updates the HTML
 		if(this.hunger > 1) {//only decrease hunger if greater than 1
-			alert(`You fed ${this.name}!`)
+			//alert(`You fed ${this.name}!`)
 			this.hunger--;
 			$($('.stats')[1]).text(`Hunger: ${this.hunger}`);
 			return
@@ -76,9 +76,10 @@ $('#sleep').on('click', (event) => {
 $('#play').on('click', (event) => {
 	pet.play();
 }); //makes an event listener on the play button
-
-
-
+$('#rename').on('click', (event) => {
+	pet.reName();
+	$('#name').text(pet.name)
+}); //makes an event listener on the rename button
 
 
 
@@ -88,10 +89,17 @@ $('#play').on('click', (event) => {
 
 const gamePlay = () => { //creates the game play function
 
+	$('#name').text(pet.name)
+
 	const clearId = setInterval( () => { //create an interval timer that increases the age of the pet
 		const dead = checkForDead();
 		pet.ageUp();
 		$($('.stats')[0]).text(`Age: ${pet.age}`);
+		if(pet.age === 1){
+			$('img').attr('src', 'images/baby_tazmanian_devil.png');
+		} else if (pet.age === 5){
+			$('img').attr('src', 'images/tasmanian_devil.gif');
+		}
 		//console.log(pet.age);
 		if(dead) {
 			console.log(`${pet.name} is not aging anymore!`)
@@ -114,6 +122,7 @@ const gamePlay = () => { //creates the game play function
 		if(dead) {
 			console.log(`${pet.name} is dead!`);
 			clearInterval(clearId2);
+			$('img').attr('src', 'images/RIP.png');
 		}
 
 	}, 5000)
