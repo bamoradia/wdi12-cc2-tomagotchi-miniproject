@@ -13,12 +13,36 @@ class Tomagotchi {
 	ageUp() {
 		this.age++;
 	};
+	reName() {
+		this.name = prompt('Please enter a name for your Tomagotchi.');
+	};
+	feed () {
+		if(this.hunger > 1){
+			this.hunger--;
+		} else if (this.hunger === 1) {
+			alert(`${this.name} is full!`);
+		}
+	};
+	sleep(){
+		if(this.sleepiness > 1){
+			this.sleepiness--;
+		} else if(this.sleepiness === 1) {
+			alert(`${this.name} isn't tired!`);
+		}
+	};
+	play(){
+		if(this.boredom > 1){
+			this.boredom--
+		} else if(this.boredom === 1) {
+			alert(`${this.name} doesn't want to play!`);
+		}
+	}
 
 }
 
 
 
-const Toma = new Tomagotchi;
+const toma = new Tomagotchi;
 
 
 
