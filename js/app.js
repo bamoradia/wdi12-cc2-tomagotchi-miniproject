@@ -10,47 +10,70 @@ class Tomagotchi {
 		this.level = 1;
 		this.image = '';
 	};
-	ageUp() {
+	ageUp () {
 		this.age++;
+		return
 	};
-	reName() {
+	reName () {
 		this.name = prompt('Please enter a name for your Tomagotchi.');
+		return
 	};
 	feed () {
-		if(this.hunger > 1){
+		console.log("feed")
+		console.log(this.hunger)
+		if(this.hunger > 1) {
+			console.log(`You fed ${this.name}!`)
 			this.hunger--;
-		} else if (this.hunger === 1) {
+			$($('.stats')[1]).text(`Hunger: ${this.hunger}`);
+			return
+		} else if(this.hunger === 1) {
 			alert(`${this.name} is full!`);
+			return
 		}
+		return
 	};
-	sleep(){
-		if(this.sleepiness > 1){
+	sleep () {
+		console.log("sleep")
+		if(this.sleepiness > 1) {
+			console.log(`${this.name} is sleeping!`)
 			this.sleepiness--;
+			$($('.stats')[2]).text(`Sleepiness: ${this.sleepiness}`);
+			return
 		} else if(this.sleepiness === 1) {
 			alert(`${this.name} isn't tired!`);
+			return
 		}
+		return
 	};
-	play(){
-		if(this.boredom > 1){
+	play () {
+		console.log("play")
+		if(this.boredom > 1) {
 			this.boredom--
+			$($('.stats')[3]).text(`Boredom: ${this.boredom}`);
+			console.log(`You played with ${this.name}!`);
+			return
 		} else if(this.boredom === 1) {
 			alert(`${this.name} doesn't want to play!`);
+			return
 		}
+		return
 	}
 
 }
 
 
 
-const toma = new Tomagotchi;
 
 
 
 
 
 
+const pet = new Tomagotchi();
 
-
+$('#feed').on('click', pet.feed);
+$('#sleep').on('click', pet.sleep);
+$('#play').on('click', pet.play);
 
 
 
