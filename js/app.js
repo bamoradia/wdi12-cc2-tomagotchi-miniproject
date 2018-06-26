@@ -1,6 +1,9 @@
 console.log('Javascript is linked');
 
+
 let sleepCondition = false;
+let time = 0;
+
 
 class Tamagotchi { //set up the class Tomagotchi
 	constructor(){//make the basics
@@ -24,7 +27,9 @@ class Tamagotchi { //set up the class Tomagotchi
 		if(this.health < 10) {//only decrease hunger if greater than 1
 			//alert(`You fed ${this.name}!`)
 			this.health++;
-			$($('.stats')[1]).text(`Health: ${this.health}`);
+			const width = this.health * 10
+			//$($('.stats')[1]).text(`Health: ${this.health}`);
+			$('.health_meter').css('width', width);
 			return
 		} else if(this.health === 10) { //let the user know pet cannot eat anymore
 			alert(`${this.name} is full!`);
@@ -36,7 +41,9 @@ class Tamagotchi { //set up the class Tomagotchi
 		if(this.energy < 10) {
 			//console.log(`${this.name} is sleeping!`)
 			this.energy++;
-			$($('.stats')[2]).text(`Energy: ${this.energy}`);
+			const width = this.energy * 10
+			//$($('.stats')[2]).text(`Energy: ${this.energy}`);
+			$('.energy_meter').css('width', width);
 			return
 		} else if(this.energy === 10) {
 			return
@@ -46,7 +53,9 @@ class Tamagotchi { //set up the class Tomagotchi
 	play () {//decreases the boredome of the pet and updates the HTML
 		if(this.interest < 10) {
 			this.interest++;
-			$($('.stats')[3]).text(`Interest: ${this.interest}`);
+			const width = this.interest * 10
+			//$($('.stats')[3]).text(`Interest: ${this.interest}`);
+			$('.interest_meter').css('width', width);
 			//console.log(`You played with ${this.name}!`);
 			return
 		} else if(this.interest === 10) {
@@ -125,22 +134,27 @@ const gamePlay = () => { //creates the game play function
 		if(sleepCondition === true){
 
 			pet.health--;
-			$($('.stats')[1]).text(`Health: ${pet.health}`);
+			//$($('.stats')[1]).text(`Health: ${pet.health}`);
+			$('.health_meter').css('width', pet.health*10);
 
 			pet.sleep();
 
 			pet.interest--;
-			$($('.stats')[3]).text(`Interest: ${pet.interest}`);
+			//$($('.stats')[3]).text(`Interest: ${pet.interest}`);
+			$('.interest_meter').css('width', pet.interest*10);
 		} else if(sleepCondition === false) {
 
 			pet.health--;
-			$($('.stats')[1]).text(`Health: ${pet.health}`);
+			//$($('.stats')[1]).text(`Health: ${pet.health}`);
+			$('.health_meter').css('width', pet.health*10);
 
 			pet.energy--;
-			$($('.stats')[2]).text(`Energy: ${pet.energy}`);
+			//$($('.stats')[2]).text(`Energy: ${pet.energy}`);
+			$('.energy_meter').css('width', pet.energy*10);
 
 			pet.interest--;
-			$($('.stats')[3]).text(`Interest: ${pet.interest}`);
+			//$($('.stats')[3]).text(`Interest: ${pet.interest}`);
+			$('.interest_meter').css('width', pet.interest*10);
 		}
 
 			const dead = checkForDead();

@@ -15,10 +15,24 @@
 		<img src="images/egg.jpg">
 	</div>	
 	<nav>
-
-		<li class='stats'>Health: 10</li>
-		<li class='stats'>Energy: 10</li>
-		<li class='stats'>Interest: 10</li>
+		<div>
+			<li class='stats'>Health</li><br>
+			<div class="health_bar">
+				<span class='health_meter'></span>
+			</div>
+		</div>
+		<div>
+			<li class='stats'>Energy</li><br>
+			<div class="energy_bar">
+				<span class='energy_meter'></span>
+			</div>
+		</div>
+		<div>
+			<li class='stats'>Interest</li><br>
+			<div class="interest_bar">
+				<span class='interest_meter'></span>
+			</div>
+		</div>
 	</nav>
 	<div class='buttonDiv'>
 		<button class='enabled' id='feed'>Feed</button>
@@ -26,10 +40,6 @@
 		<button class='enabled' id="play">Play</button>
 	</div>
 	<div><button class='enabled' id='restart'>Restart Game</button></div>
-
-	
-
-
 
 	<script type="text/javascript" src='js/app.js'></script>
 </body>
