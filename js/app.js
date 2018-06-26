@@ -1,5 +1,7 @@
 console.log('Javascript is linked');
 
+let sleepCondition = false;
+
 class Tamagotchi { //set up the class Tomagotchi
 	constructor(){//make the basics
 		this.name = prompt('Please enter a name for your Tomagotchi.');
@@ -37,7 +39,6 @@ class Tamagotchi { //set up the class Tomagotchi
 			$($('.stats')[2]).text(`Energy: ${this.energy}`);
 			return
 		} else if(this.energy === 10) {
-			alert(`${this.name} isn't tired!`);
 			return
 		}
 		return
@@ -54,10 +55,7 @@ class Tamagotchi { //set up the class Tomagotchi
 		}
 		return
 	}
-
 };
-
-
 
 
 
@@ -66,8 +64,25 @@ const pet = new Tamagotchi(); //create a new object from the Tomagotchi class
 $('#feed').on('click', (event) => {
 	pet.feed(); //makes an event listener on the feed button
 });
-$('#sleep').on('click', (event) => {
-	pet.sleep(); //makes an event listener on the sleep button 
+$('#sleep').on('click', (event) => {//makes an event listener on the sleep button 
+	if(sleepCondition === false){
+		$('#feed').prop('disabled', true);
+		$('#feed').addClass('disabled');
+		$('#feed').removeClass('enabled');
+		$('#play').prop('disabled', true);
+		$('#play').addClass('disabled');
+		$('#play').removeClass('enabled');
+		sleepCondition = true;
+		//$('#feed').css('opacity', .5);
+	} else if(sleepCondition === true){
+		$('#feed').prop('disabled', false);
+		$('#feed').addClass('enabled');
+		$('#feed').removeClass('disabled');
+		$('#play').prop('disabled', false);
+		$('#play').addClass('enabled');
+		$('#play').removeClass('disabled');
+		sleepCondition = false;
+	}
 });
 $('#play').on('click', (event) => {
 	pet.play();
@@ -106,23 +121,35 @@ const gamePlay = () => { //creates the game play function
 	}, 5000);
 
 	const clearId2 = setInterval( () => { //create an interval timer that increases the other stats of the pet
-		pet.health--;
-		$($('.stats')[1]).text(`Health: ${pet.health}`);
 
-		pet.energy--;
-		$($('.stats')[2]).text(`Energy: ${pet.energy}`);
+		if(sleepCondition === true){
 
-		pet.interest--;
-		$($('.stats')[3]).text(`Interest: ${pet.interest}`);
+			pet.health--;
+			$($('.stats')[1]).text(`Health: ${pet.health}`);
 
-		const dead = checkForDead();
-		//console.log(pet.hunger, pet.sleepiness, pet.boredom);
-		if(dead) {
-			console.log(`${pet.name} is dead!`);
-			clearInterval(clearId2);
-			$('img').attr('src', 'images/RIP.png');
+			pet.sleep();
+
+			pet.interest--;
+			$($('.stats')[3]).text(`Interest: ${pet.interest}`);
+		} else if(sleepCondition === false) {
+
+			pet.health--;
+			$($('.stats')[1]).text(`Health: ${pet.health}`);
+
+			pet.energy--;
+			$($('.stats')[2]).text(`Energy: ${pet.energy}`);
+
+			pet.interest--;
+			$($('.stats')[3]).text(`Interest: ${pet.interest}`);
 		}
 
+			const dead = checkForDead();
+			//console.log(pet.hunger, pet.sleepiness, pet.boredom);
+			if(dead) {
+				console.log(`${pet.name} is dead!`);
+				clearInterval(clearId2);
+				$('img').attr('src', 'images/RIP.png');
+			}
 	}, 5000);
 
 } ;
