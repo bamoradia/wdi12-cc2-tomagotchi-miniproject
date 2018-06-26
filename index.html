@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- <meta charset='utf-8'> -->
 	<title>Day 11 Tamagotchi Mini Project</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<h3 id='name'></h1>
+	<h3 id='name'></h3><br>
+	<nav class='age'><li class='stats'>Age: 1</li></nav>
+	<button id="rename">Rename your pet</button>
 	<div>
 		<img src="images/egg.jpg">
 	</div>	
 	<nav>
-		<li class='stats'>Age: 1</li>
-		<li class='stats'>Hunger: 1</li>
-		<li class='stats'>Sleepiness: 1</li>
-		<li class='stats'>Boredom: 1</li>
+
+		<li class='stats'>Health: 10</li>
+		<li class='stats'>Energy: 10</li>
+		<li class='stats'>Interest: 10</li>
 	</nav>
-	<div class='buttons'>
-		<button id="rename">Rename your pet</button>
-		<button id='feed'>Feed Me!</button>
-		<button id="sleep">Turn off the Lights!</button>
-		<button id="play">Play with Me!</button>
+	<div class='buttonDiv'>
+		<button id='feed'>🌮</button>
+		<button id="sleep">😴</button>
+		<button id="play">🏑</button>
 	</div>
+	<div><button id='restart'>Restart Game</button></div>
 
 	
 

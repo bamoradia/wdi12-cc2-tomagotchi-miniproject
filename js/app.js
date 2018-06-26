@@ -4,9 +4,9 @@ class Tamagotchi { //set up the class Tomagotchi
 	constructor(){//make the basics
 		this.name = prompt('Please enter a name for your Tomagotchi.');
 		this.age = 0;
-		this.hunger = 1;
-		this.sleepiness = 1;
-		this.boredom = 1;
+		this.health = 10
+		this.energy = 10;
+		this.interest = 10;
 		this.level = 1;
 		this.image = '';
 	}
@@ -19,47 +19,43 @@ class Tamagotchi { //set up the class Tomagotchi
 		return
 	}
 	feed () {//decreases the hunger of the pet and updates the HTML
-		if(this.hunger > 1) {//only decrease hunger if greater than 1
+		if(this.health < 10) {//only decrease hunger if greater than 1
 			//alert(`You fed ${this.name}!`)
-			this.hunger--;
-			$($('.stats')[1]).text(`Hunger: ${this.hunger}`);
+			this.health++;
+			$($('.stats')[1]).text(`Health: ${this.health}`);
 			return
-		} else if(this.hunger === 1) { //let the user know pet cannot eat anymore
+		} else if(this.health === 10) { //let the user know pet cannot eat anymore
 			alert(`${this.name} is full!`);
 			return
 		}
 		return
 	}
 	sleep () {//decreases the sleepiness of the pet and updates the HTML
-		if(this.sleepiness > 1) {
-			console.log(`${this.name} is sleeping!`)
-			this.sleepiness--;
-			$($('.stats')[2]).text(`Sleepiness: ${this.sleepiness}`);
+		if(this.energy < 10) {
+			//console.log(`${this.name} is sleeping!`)
+			this.energy++;
+			$($('.stats')[2]).text(`Energy: ${this.energy}`);
 			return
-		} else if(this.sleepiness === 1) {
+		} else if(this.energy === 10) {
 			alert(`${this.name} isn't tired!`);
 			return
 		}
 		return
 	}
 	play () {//decreases the boredome of the pet and updates the HTML
-		if(this.boredom > 1) {
-			this.boredom--
-			$($('.stats')[3]).text(`Boredom: ${this.boredom}`);
-			console.log(`You played with ${this.name}!`);
+		if(this.interest < 10) {
+			this.interest++;
+			$($('.stats')[3]).text(`Interest: ${this.interest}`);
+			//console.log(`You played with ${this.name}!`);
 			return
-		} else if(this.boredom === 1) {
+		} else if(this.interest === 10) {
 			alert(`${this.name} doesn't want to play!`);
 			return
 		}
 		return
 	}
 
-}
-
-
-
-
+};
 
 
 
@@ -80,7 +76,9 @@ $('#rename').on('click', (event) => {
 	pet.reName();
 	$('#name').text(pet.name)
 }); //makes an event listener on the rename button
-
+$('#restart').on('click', (event) => {
+	location.reload();
+}); //makes an event listener on the restart button
 
 
 
@@ -108,14 +106,14 @@ const gamePlay = () => { //creates the game play function
 	}, 5000);
 
 	const clearId2 = setInterval( () => { //create an interval timer that increases the other stats of the pet
-		pet.hunger++;
-		$($('.stats')[1]).text(`Hunger: ${pet.hunger}`);
+		pet.health--;
+		$($('.stats')[1]).text(`Health: ${pet.health}`);
 
-		pet.sleepiness++;
-		$($('.stats')[2]).text(`Sleepiness: ${pet.sleepiness}`);
+		pet.energy--;
+		$($('.stats')[2]).text(`Energy: ${pet.energy}`);
 
-		pet.boredom++;
-		$($('.stats')[3]).text(`Boredom: ${pet.boredom}`);
+		pet.interest--;
+		$($('.stats')[3]).text(`Interest: ${pet.interest}`);
 
 		const dead = checkForDead();
 		//console.log(pet.hunger, pet.sleepiness, pet.boredom);
@@ -125,18 +123,22 @@ const gamePlay = () => { //creates the game play function
 			$('img').attr('src', 'images/RIP.png');
 		}
 
-	}, 5000)
+	}, 5000);
 
-} 
+} ;
 
 
 const checkForDead = () => { //checks if the pet has died
-	if(pet.hunger >= 10 || pet.sleepiness >= 10 || pet.boredom >= 10) {
+	if(pet.health <= 0 || pet.energy <= 0 || pet.interest <= 0) {
+		$('#feed').off('click');
+		$('#sleep').off('click');
+		$('#play').off('click');
+		$('#rename').off('click');
 		return true
 	} else {
 		return false
 	};
-}
+};
 
 
 gamePlay(); //run the game
