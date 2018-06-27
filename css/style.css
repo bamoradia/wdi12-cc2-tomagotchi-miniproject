@@ -123,30 +123,32 @@ img{
   background: #b2c6d4;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  cursor: not-allowed;
 }
 
 
 
 
 button {
-border: none;
-background: #404040;
-color: #ffffff !important;
-font-weight: 100;
-padding: 20px;
-text-transform: uppercase;
-border-radius: 6px;
-display: inline-block;
+	border: none;
+	background: #404040;
+	color: #ffffff;
+	font-weight: 100;
+	padding: 20px;
+	text-transform: uppercase;
+	border-radius: 6px;
+	display: inline-block;
 }
 
 .enabled:hover {
-color: #404040 !important;
-font-weight: 700 !important;
-letter-spacing: 3px;
-background: none;
--webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
--moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-transition: all 0.3s ease 0s;
+	color: #404040;
+	font-weight: 700;
+	letter-spacing: 3px;
+	background: none;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
 }
 
 
@@ -156,7 +158,6 @@ transition: all 0.3s ease 0s;
 	height: 15px;
 	background-color: #404040;
 	text-align: left;
-
 	opacity: .65;
 }
 
@@ -164,7 +165,6 @@ transition: all 0.3s ease 0s;
 	display: inline-block ;
 	width: 100px;
 	height: 15px;
-	background-color: green !important;
-
+	background-color: green;
 }
 
