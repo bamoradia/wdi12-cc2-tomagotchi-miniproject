@@ -75,21 +75,33 @@ $('#feed').on('click', (event) => {
 });
 $('#sleep').on('click', (event) => {//makes an event listener on the sleep button 
 	if(sleepCondition === false){//if previous was not in sleep
-		$('#feed').prop('disabled', true); //disable play and feed buttons
-		$('#feed').addClass('disabled');
-		$('#feed').removeClass('enabled');
-		$('#play').prop('disabled', true);
-		$('#play').addClass('disabled');
-		$('#play').removeClass('enabled');
+		// $('#feed').prop('disabled', true); //disable play and feed buttons
+		// $('#feed').addClass('disabled');
+		// $('#feed').removeClass('enabled');
+		// $('#play').prop('disabled', true);
+		// $('#play').addClass('disabled');
+		// $('#play').removeClass('enabled');
+		$('#feed').toggle( 'fade', {}, 1000 )
+		$('#play').toggle( 'fade', {}, 1000 )
+		$('img').attr('src', 'images/tasmanian devil sleepy.jpg');
+		$('body').attr('background', 'images/ep_naturalblack.png')
 		sleepCondition = true;
 		//$('#feed').css('opacity', .5);
 	} else if(sleepCondition === true){ //if previous was in sleep
-		$('#feed').prop('disabled', false);//enable feed and play buttons
-		$('#feed').addClass('enabled');
-		$('#feed').removeClass('disabled');
-		$('#play').prop('disabled', false);
-		$('#play').addClass('enabled');
-		$('#play').removeClass('disabled');
+		// $('#feed').prop('disabled', false);//enable feed and play buttons
+		// $('#feed').addClass('enabled');
+		// $('#feed').removeClass('disabled');
+		// $('#play').prop('disabled', false);
+		// $('#play').addClass('enabled');
+		// $('#play').removeClass('disabled');
+		$('#feed').toggle( 'fade', {}, 1000 )
+		$('#play').toggle( 'fade', {}, 1000 )
+		if(pet.age === 1){
+			$('img').attr('src', 'images/baby_tazmanian_devil.png'); //changes the image once 1
+		} else if (pet.age === 5){
+			$('img').attr('src', 'images/tasmanian_devil.gif'); //changes the image once 5
+		}
+		$('body').attr('background', 'images/doodles.png')
 		sleepCondition = false;
 	}
 });
@@ -207,22 +219,26 @@ const gamePlay = () => { //creates the game play function
 
 const checkForDead = () => { //checks if the pet has died
 	if(pet.health <= 0 || pet.energy <= 0 || pet.interest <= 0) { //if any stats are 0
-		$('#feed').off('click'); //diables feed, sleep, play and rename buttons
-		$('#sleep').off('click');
-		$('#play').off('click');
-		$('#rename').off('click');
-		$('#feed').prop('disabled', true);
-		$('#feed').addClass('disabled');
-		$('#feed').removeClass('enabled');
-		$('#sleep').prop('disabled', true);
-		$('#sleep').addClass('disabled');
-		$('#sleep').removeClass('enabled');
-		$('#play').prop('disabled', true);
-		$('#play').addClass('disabled');
-		$('#play').removeClass('enabled');
-		$('#rename').prop('disabled', true);
-		$('#rename').addClass('disabled');
-		$('#rename').removeClass('enabled');
+		// $('#feed').off('click'); //diables feed, sleep, play and rename buttons
+		// $('#sleep').off('click');
+		// $('#play').off('click');
+		// $('#rename').off('click');
+		// $('#feed').prop('disabled', true);
+		// $('#feed').addClass('disabled');
+		// $('#feed').removeClass('enabled');
+		// $('#sleep').prop('disabled', true);
+		// $('#sleep').addClass('disabled');
+		// $('#sleep').removeClass('enabled');
+		// $('#play').prop('disabled', true);
+		// $('#play').addClass('disabled');
+		// $('#play').removeClass('enabled');
+		// $('#rename').prop('disabled', true);
+		// $('#rename').addClass('disabled');
+		// $('#rename').removeClass('enabled');
+		$('#feed').toggle( 'fade', {}, 1000 )
+		$('#sleep').toggle( 'fade', {}, 1000 )
+		$('#play').toggle( 'fade', {}, 1000 )
+		$('#rename').toggle( 'fade', {}, 1000 )
 		return true
 	} else {
 		return false
