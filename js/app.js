@@ -84,6 +84,7 @@ $('#sleep').on('click', (event) => {//makes an event listener on the sleep butto
 		$('#play').toggle( 'fade', {}, 1000 )
 		$('img').attr('src', 'images/tasmanian devil sleepy.jpg');
 		$('body').attr('background', 'images/ep_naturalblack.png')
+		$('#sleep').text('TURN ON THE LIGHTS');
 		sleepCondition = true;
 		//$('#feed').css('opacity', .5);
 	} else if(sleepCondition === true){ //if previous was in sleep
@@ -95,6 +96,7 @@ $('#sleep').on('click', (event) => {//makes an event listener on the sleep butto
 		// $('#play').removeClass('disabled');
 		$('#feed').toggle( 'fade', {}, 1000 )
 		$('#play').toggle( 'fade', {}, 1000 )
+		$('#sleep').text('TURN OFF THE LIGHTS');
 		if(pet.age >= 1 && pet.age < 5){
 			$('img').attr('src', 'images/baby_tazmanian_devil.png'); //changes the image once 1
 		} else if (pet.age >= 5){
