@@ -95,9 +95,9 @@ $('#sleep').on('click', (event) => {//makes an event listener on the sleep butto
 		// $('#play').removeClass('disabled');
 		$('#feed').toggle( 'fade', {}, 1000 )
 		$('#play').toggle( 'fade', {}, 1000 )
-		if(pet.age === 1){
+		if(pet.age >= 1 && pet.age < 5){
 			$('img').attr('src', 'images/baby_tazmanian_devil.png'); //changes the image once 1
-		} else if (pet.age === 5){
+		} else if (pet.age >= 5){
 			$('img').attr('src', 'images/tasmanian_devil.gif'); //changes the image once 5
 		}
 		$('body').attr('background', 'images/doodles.png')
