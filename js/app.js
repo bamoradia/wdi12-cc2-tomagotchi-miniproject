@@ -4,7 +4,6 @@ console.log('Javascript is linked');
 let sleepCondition = false;
 let time = 0;
 
-
 class Tamagotchi { //set up the class Tomagotchi
 	constructor(){//make the basics
 		this.name = prompt('Please enter a name for your Tomagotchi.');
